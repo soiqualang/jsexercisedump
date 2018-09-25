@@ -1,9 +1,9 @@
-       function solveMeFirst(a, b) {
-            return a+b   
-        }
+function solveMeFirst(a, b) {
+    return a+b   
+}
   
-        var a = parseInt(readLine());
-        var b = parseInt(readLine());;
+var a = 2;
+var b = 6;
 
-        var res = solveMeFirst(a, b);
-        console.log(res);
+var res = solveMeFirst(a, b);
+console.log(res);

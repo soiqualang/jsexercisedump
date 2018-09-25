@@ -1,11 +1,11 @@
-        function simpleArraySum(ar) {
-            let sum = 0
-            for(let i=0; i<ar.length; i++)
-            {
-                sum += ar[i];
-            }
-            return sum;
-        }
+function simpleArraySum(ar) {
+    let sum = 0
+    for(let i=0; i<ar.length; i++)
+    {
+        sum += ar[i];
+    }
+    return sum;
+}
 
-        let arreglo = [1,2,3]
-        console.log(simpleArraySum(arreglo))
+let arreglo = [1,2,3]
+console.log(simpleArraySum(arreglo))
