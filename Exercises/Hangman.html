@@ -1,0 +1,79 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <title>Hangman</title>
+</head>
+<body>
+    <h1>Hangman</h1>
+
+    <script>
+        //Word array
+        var words = [
+            "Man",
+            "Amazing",
+            "Pancake",
+            "Hangman",
+            "Francys",
+            "Samuel",
+            "Baseball",
+            "Acronym",
+            "Nibba"
+        ];
+        //Picking a random word
+        var word = words[Math.floor(Math.random()* words.length)]
+        var wordlength = word.length
+
+        //Picking number of attempts
+        var guessLimit = 3
+        var guessFound = false
+
+        //Filling the array with underscores
+        var answerArray = []
+        for(var i=0; i< wordlength; i++){
+            answerArray[i] = "_";
+        }
+
+        //Setting up remaining letter count
+        var remainingLetters = wordlength;
+
+        while (remainingLetters > 0 && guessLimit > 0){
+
+            //Showing progress
+            alert(answerArray.join(" "));
+
+            //Player input
+            var guess = prompt("Guess a letter, or click Cancel to stop playing. You have " + guessLimit + " tries remaining");
+            if(guess === null){
+                break;
+            } else if (guess.length !== 1){
+                alert("Please enter a single letter.")
+            } else {
+                guessFound = false;
+                //Update the game with the guess
+                for( var j = 0; j<wordlength; j++){
+                    if(word[j].toLowerCase() === guess.toLowerCase()){
+                        if(answerArray[j] === "_"){
+                            answerArray[j] = word[j];
+                            remainingLetters--;
+                        }
+                        guessFound = true;
+                    }
+                }
+                if(guessFound == false){
+                    guessLimit--
+                }
+            }
+        }
+        
+        //Show the answer
+        if(remainingLetters == 0){
+            alert("Good job! The answer was " + word);
+        }
+        else{
+            alert("You lost! The answer was " + word);
+        }
+
+
+    </script>
+</body>
+</html>

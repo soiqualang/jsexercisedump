@@ -1,0 +1,35 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <title>Array comparison</title>
+</head>
+<body>
+    <h1>Array comparison</h1>
+
+    <script>
+
+        let ArrayUno = [1,2,3,0]
+        let ArrayDos = [1,2,3]
+
+        function Compare(Array1,Array2){
+            if(Array1.length !== Array2.length){
+                return false
+            }
+            for(i=0; i<Array1.length; i++){
+                if(Array1[i] !== Array2[i]){
+                    return false
+                }
+            }
+            return true
+        }
+        
+        if(Compare(ArrayUno,ArrayDos)){
+            console.log("The arrays are equal");
+        }
+        else{
+            console.log("The arrays are different")
+        }
+    
+    </script>
+</body>
+</html>

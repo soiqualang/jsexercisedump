@@ -1,0 +1,99 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <title>Hangman</title>
+</head>
+<body>
+    <h1>Hangman</h1>
+
+    <script>
+
+        function pickWord(){
+            //Returns a word
+            //Word array
+            let words = ["Man","Amazing","Pancake","Hangman","Francys",
+                        "Samuel","Baseball","Acronym","Nibba"];
+            //Picking a random word
+            let fWord = words[Math.floor(Math.random()* words.length)]
+            return fWord;
+        };
+
+        function setupAnswerArray(fWord){
+        
+            let returnAnswerArray = []
+            //Returns answer array
+            for(let i=0; i< fWord.length; i++){
+                returnAnswerArray[i] = "_";
+            }
+            return returnAnswerArray
+        };
+
+        function showPlayerProgress(fAnswerArray){
+            //Use alert to show player their progress
+            alert(fAnswerArray.join(" "));
+            return
+        };
+
+        function getGuess(fGuessLimit){
+            //Use prompt to get a guess
+            return  prompt("Guess a letter, or click Cancel to stop playing. You have " + fGuessLimit + " tries remaining");
+        };
+
+        function updateGameState(fGuess,fWord,fAnswerArray){
+            //Update answer array and return a number showing how many
+            //times the guess appears in the word so remainingLetters
+            //can be updated
+            let fCorrectGuesses = 0
+            for( let j = 0; j<fWord.length; j++){
+                if(word[j].toLowerCase() === fGuess.toLowerCase()){
+                    if(answerArray[j] === "_"){
+                        answerArray[j] = word[j];
+                        fCorrectGuesses++;
+                    }
+                }
+            }
+            return fCorrectGuesses
+        };
+
+        function showAnswerAndCongratulatePlayer(fWord,fRemainingLetters){
+            if(fRemainingLetters == 0){
+                alert("Good job! The answer was " + word);
+            }
+            else{
+                alert("You lost! The answer was " + word);
+            }
+        };
+
+        let game = true;
+        let word = pickWord();
+        //Picking number of attempts
+        let guessLimit = 10;
+        //Filling the array with underscores
+        let answerArray = setupAnswerArray(word);        
+        //Setting up remaining letter count
+        let remainingLetters = word.length;
+
+
+        while (remainingLetters > 0 && guessLimit > 0){
+            //Showing progress
+            showPlayerProgress(answerArray);
+            //Player input
+            let guess = getGuess(guessLimit)
+            if(guess === null){
+                break;
+            } else if (guess.length !== 1){
+                alert("Please enter a single letter.")
+            } else {
+                let correctGuesses = updateGameState(guess,word,answerArray);
+                remainingLetters -= correctGuesses;
+                if(correctGuesses == 0){
+                    guessLimit--
+                }
+            }
+        }
+        //Show the answer
+        showAnswerAndCongratulatePlayer(word,remainingLetters);
+
+    </script>
+</body>
+</html>

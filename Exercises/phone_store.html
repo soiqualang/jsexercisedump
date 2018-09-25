@@ -1,0 +1,39 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Phone_store</title>
+</head>
+<body>
+    <h1>Phone store</h1>
+    <script>
+
+    const TAX_RATE = 0.08;
+    const PHONE_PRICE = 99.99;
+    const ACCESORY_PHONE = 9.99;
+
+    const BANK_BALANCE = prompt("Please enter your current bank balance");
+    const SPENDING_TRESHOLD = prompt("Please enter your spending treshold amount");
+
+    var phoneAmount = 0;
+    var amount = 0;
+
+    function calculateTax(fAmount){
+        return (fAmount + fAmount * TAX_RATE)
+    }
+
+    while(amount < BANK_BALANCE){
+        amount += PHONE_PRICE;
+        phoneAmount++;
+        if(amount < SPENDING_TRESHOLD)
+        {
+            amount += ACCESORY_PHONE;
+        }
+    }
+
+    console.log(calculateTax(amount))
+    console.log(phoneAmount)
+
+    </script>
+</body>
+</html>
